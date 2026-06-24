@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap');
 @import './styles/button.css';
+@import './styles/seat.css';
+@import './styles/booking.css';
 
 :root {
   /* Brand */
