@@ -1,0 +1,62 @@
+Role: You are a Figma design-system engineer and developer handoff specialist. Create a production-ready Figma file and handoff package that implements the frontend plan for SeatFlow (React + TypeScript, Vite, Storybook) and enforces a professional folder/file mapping for developer consumption.
+
+Primary goals:
+Produce a single Figma file named SeatFlow Design System with pages: Tokens, Atoms, Components, Pages, Prototypes, Assets, Handoff.
+Create design tokens (colors, typography, spacing, radii, shadows, breakpoints) and export a canonical tokens.json (match naming exactness).
+Build an atomic to component to page library with variants, accessibility notes, and Storybook mapping.
+Export optimized assets and produce a hand-off page (mapping components to code paths, story names, usage examples).
+
+Inputs you may use:
+Use provided design tokens (if I paste them) or generate tokens matching the brand palette: blue primary, green secondary, warm accent. Primary breakpoints: mobile 375, tablet 768, desktop 1440. Target WCAG AA.
+
+Deliverables (must produce all):
+
+1. Figma structure:
+Pages: Tokens, Atoms, Components, Pages, Prototypes, Assets, Handoff.
+On Tokens page: create Color Styles, Text Styles, Effects, Grid/Breakpoints and a downloadable tokens.json and tokens.css (CSS variables).
+2. Atoms (each as a component with stories/variants):
+Text styles: Display, H1, H2, H3, Body, Small.
+Buttons: Primary, Secondary, Ghost (variants: size: sm/md/lg; state: default/hover/active/disabled/loading).
+Inputs: Text input, Select, Textarea, Checkbox, Radio, Toggle (states and error/disabled).
+Icons: create an icon set (16/20/24/32) with export names.
+Utilities: Avatar, Badge, Tag, Tooltip, Toast.
+3. Core Components and Organisms:
+Header (with search, auth state), Footer, Page Container, Grid system, Card/EventPreview, EventList, EventFilters, Modal, Toast.
+Booking-specific: Seat component, SeatLegend, SeatMap (SVG-based, with pan/zoom prototypes), SeatTooltip, BookingStepper, BookingSummary, TicketCard (QR placeholder).
+Admin/Organizer: EventEditor form, SeatManager UI.
+4. SeatMap specifics:
+Seat states: available / selected / held / reserved / sold / blocked.
+Seat variants: VIP, Standard, Accessible, Companion.
+Create an interactive prototype for seat selection with keyboard navigation and tooltip on hover/tap showing price, category, and seat id.
+Provide a sample dataset artboard (rows, seat numbers) for the SeatMap story.
+5. Prototypes:
+Build an interactive flow: Events to Event Detail to Seat Selection to Booking Details to Payment (stub) to Confirmation.
+Demonstrate optimistic hold behavior: select seats to show hold countdown modal to proceed to details.
+6. Assets and Export rules:
+Place source frames and exports frames in Assets page.
+Export naming: kebab-case with descriptive prefixes (examples: logo-seatflow.svg, hero-events-1200x600.jpg, icon-search-24.svg, anim-loading.json).
+Export raster at 1x and 2x for hero and email banners. Optimize SVGs and provide recommended export settings.
+7. Handoff page:
+For every component create a code mapping table: Figma component name to src/components/Category/Name/ to suggested filenames and a Storybook story name components/Category/Name.stories.tsx.
+Include example JSX/TSX snippet for the primary Button and Seat component props and token references.
+Include accessibility notes (ARIA), keyboard behavior, and accepted props/variant names.
+Produce an Assets manifest listing exported file names, recommended CDN paths, and recommended image sizes.
+8. Acceptance criteria:
+Tokens export available as tokens.json and tokens.css.
+At least one Storybook-mappable story per core component documented on the Handoff page.
+SeatMap prototype is interactive and demonstrates selection, pan/zoom, and hold warning.
+All color styles pass WCAG AA contrast for normal text; annotate any exceptions.
+Provide final checklist: tokens.json, assets archive, components mapping, example code snippets.
+
+Constraints and conventions:
+Figma naming convention: Category / Name (example: Button / Primary).
+Variant properties: size: sm|md|lg, kind: primary|secondary|ghost, state: default|hover|active|disabled|loading.
+Breakpoints: Mobile 375, Tablet 768, Desktop 1440 — create responsive frames for each major Page template.
+Accessibility: target WCAG AA; include focus states and keyboard behavior for interactive elements.
+Developer mapping: Map components to src/components/Category/Name/index.tsx and stories under components/Category/Name.stories.tsx.
+
+Questions/assumptions for me to confirm after initial draft:
+Do you want light-only or light + dark tokens?
+Provide any real brand assets (logo, fonts) or use placeholders?
+
+Deliver the Figma file and, in the Figma file Handoff page, paste the ready-to-copy JSON for tokens.json, a short design/hand-off.md summary and list the exported filenames. Finish with a concise release note describing what changed and how to consume tokens in code.
