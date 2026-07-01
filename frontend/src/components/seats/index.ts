@@ -1,6 +1,0 @@
-export { Seat } from './Seat'
-export { SeatTooltip } from './SeatTooltip'
-export { SeatLegend } from './SeatLegend'
-export { SeatMap } from './SeatMap'
-export type { SeatProps } from './Seat'
-export type { SeatMapProps } from './SeatMap'
