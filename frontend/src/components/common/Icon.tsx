@@ -1,4 +1,4 @@
-import { ElementType, SVGProps } from 'react'
+import { ElementType } from 'react'
 import clsx from 'clsx'
 
 type IconSize = 'xs' | 'sm' | 'md' | 'lg'
@@ -10,10 +10,8 @@ const sizeMap: Record<IconSize, number> = {
   lg: 24,
 }
 
-type LucideIcon = ElementType<SVGProps<SVGSVGElement> & { size?: number; strokeWidth?: number }>
-
 type IconProps = {
-  icon: LucideIcon
+  icon: ElementType
   size?: IconSize
   className?: string
   'aria-hidden'?: boolean
@@ -21,14 +19,14 @@ type IconProps = {
 }
 
 export function Icon({
-  icon: LucideIconComponent,
+  icon: IconComponent,
   size = 'md',
   className,
   'aria-hidden': ariaHidden = true,
   'aria-label': ariaLabel,
 }: IconProps) {
   return (
-    <LucideIconComponent
+    <IconComponent
       size={sizeMap[size]}
       className={clsx('sf-icon', className)}
       aria-hidden={ariaHidden}
