@@ -1,1 +1,37 @@
-node_modules
+# Dependencies / env
+node_modules/
+frontend/node_modules/
+backend/.venv/
+.venv/
+.env
+**/.env
+!.env.example
+!**/.env.example
+
+# Build / cache
+dist/
+frontend/dist/
+**/__pycache__/
+**/*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+coverage/
+*.tsbuildinfo
+.DS_Store
+
+# IDE / OS
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local tooling
+.cursor/
+.vite/
