@@ -4,18 +4,20 @@ Professional process for planning, developing, reviewing, and shipping the Seat-
 
 **Stack:** Frontend → Vercel (React + TypeScript) · API → Hugging Face Space (FastAPI + Docker) · DB/Auth → Supabase
 
+Also see root [CONTRIBUTING.md](../../CONTRIBUTING.md) (branching + **required** GitHub keywords).
+
 ---
 
 ## Table of contents
 
 1. [Current status](#1-current-status)
-2. [Issue count overview](#2-issue-count-overview)
+2. [Issue map (real GitHub numbers)](#2-issue-map-real-github-numbers)
 3. [Planning and tracking](#3-planning-and-tracking--projects--issues)
 4. [Development and proposal](#4-development-and-proposal--branching--prs)
-5. [Linking work](#5-linking-work--issue-keywords)
+5. [Linking work — GitHub keywords (required)](#5-linking-work--github-keywords-required)
 6. [Automated quality assurance](#6-automated-quality-assurance--github-actions)
 7. [Review, merge, and closure](#7-review-merge-and-closure--full-integration)
-8. [This week’s checklist](#8-this-weeks-checklist)
+8. [All remaining steps (ordered)](#8-all-remaining-steps-ordered)
 9. [Do not do](#9-do-not-do)
 10. [Quick reference](#10-quick-reference)
 
@@ -25,31 +27,42 @@ Professional process for planning, developing, reviewing, and shipping the Seat-
 
 | Area | Status |
 |------|--------|
-| Phase 0–1 (tools, accounts, `/health`, env) | Done locally |
-| GitHub Issues (open, MVP-aligned) | None yet |
-| CI workflows (`.github/workflows/*`) | Empty stubs |
-| Frontend | UI prototype exists; not audited against API/MVP |
-| Backend | Health/bootstrap only; domain features not built |
+| Phase 0–1 (tools, accounts, `/health`, env) | Done — tracked as closed [#35](https://github.com/galibhasan720/Seat-Flow/issues/35), [#36](https://github.com/galibhasan720/Seat-Flow/issues/36) |
+| Labels + 18 MVP issues | Done (#35–#52) |
+| GitHub Project board | Create `Seat-Flow MVP` and add #35–#52 |
+| CI workflows | Implement via PR: `Closes #37` |
+| CONTRIBUTING + PR template | Implement via PR: `Closes #38` |
+| Frontend | UI prototype; audit via [#39](https://github.com/galibhasan720/Seat-Flow/issues/39) |
+| Backend | Health/bootstrap; features via #40–#52 |
 
-**Important:** Files under `project_issues/` still describe **AWS Lambda + DynamoDB**. That stack is **out of scope** for this MVP. Treat those files as historical notes and create a **new** issue set aligned to Vercel + Hugging Face + Supabase.
-
-Do not invent frontend bug issues yet. Start with an **audit** issue; open real bugs only after gaps are confirmed.
+**Important:** Files under `project_issues/` still describe **AWS Lambda + DynamoDB**. Out of scope for this MVP. Use issues **#35–#52** instead.
 
 ---
 
-## 2. Issue count overview
+## 2. Issue map (real GitHub numbers)
 
-Create **18 issues** for the MVP board.
+Repo already had older issues, so the MVP set is **#35–#52** (not #1–#18).
 
-| Kind | Purpose | Count |
-|------|---------|------:|
-| Closed / done (Phase 0–1) | Document completed work | 2 |
-| Process / QA | CI + workflow rules | 2 |
-| Product / feature | MVP delivery | 13 |
-| Hardening | Deploy smoke + release checklist | 1 |
-| **Total** | | **18** |
-
-Optional later: split large issues (for example Auth) into smaller ones — up to ~25. Start with **18**.
+| Step | Issue | Title | Status |
+|-----:|------:|-------|--------|
+| 1 | [#35](https://github.com/galibhasan720/Seat-Flow/issues/35) | Phase 0–1 prerequisites | Closed |
+| 2 | [#36](https://github.com/galibhasan720/Seat-Flow/issues/36) | Phase 0–1 env bootstrap | Closed |
+| 3 | [#37](https://github.com/galibhasan720/Seat-Flow/issues/37) | GitHub Actions CI | Open |
+| 4 | [#38](https://github.com/galibhasan720/Seat-Flow/issues/38) | CONTRIBUTING + keywords | Open |
+| 5 | [#39](https://github.com/galibhasan720/Seat-Flow/issues/39) | Frontend MVP audit | Open |
+| 6 | [#40](https://github.com/galibhasan720/Seat-Flow/issues/40) | Supabase schema | Open |
+| 7 | [#41](https://github.com/galibhasan720/Seat-Flow/issues/41) | Auth + JWT + RBAC | Open |
+| 8 | [#42](https://github.com/galibhasan720/Seat-Flow/issues/42) | OpenAPI contract | Open |
+| 9 | [#43](https://github.com/galibhasan720/Seat-Flow/issues/43) | App shell / routing | Open |
+| 10 | [#44](https://github.com/galibhasan720/Seat-Flow/issues/44) | Event discovery | Open |
+| 11 | [#45](https://github.com/galibhasan720/Seat-Flow/issues/45) | Seat selection | Open |
+| 12 | [#46](https://github.com/galibhasan720/Seat-Flow/issues/46) | Booking lifecycle | Open |
+| 13 | [#47](https://github.com/galibhasan720/Seat-Flow/issues/47) | Notifications | Open |
+| 14 | [#48](https://github.com/galibhasan720/Seat-Flow/issues/48) | Organizer panel | Open |
+| 15 | [#49](https://github.com/galibhasan720/Seat-Flow/issues/49) | Analytics | Open |
+| 16 | [#50](https://github.com/galibhasan720/Seat-Flow/issues/50) | Admin | Open |
+| 17 | [#51](https://github.com/galibhasan720/Seat-Flow/issues/51) | Vitest + Pytest | Open |
+| 18 | [#52](https://github.com/galibhasan720/Seat-Flow/issues/52) | Deploy smoke | Open |
 
 ---
 
@@ -57,76 +70,17 @@ Optional later: split large issues (for example Auth) into smaller ones — up t
 
 ### 3.1 Create a GitHub Project
 
-1. Open the repo → **Projects** → **New project** → **Board**
+1. Repo → **Projects** → **New project** → **Board**
 2. Name: `Seat-Flow MVP`
-3. Columns:
+3. Columns: `Backlog` → `Ready` → `In Progress` → `In Review` → `Done`
+4. Add issues #35–#52
+5. Place #35–#36 in **Done**; #37–#40 in **Ready**; #41–#52 in **Backlog**
 
-   `Backlog` → `Ready` → `In Progress` → `In Review` → `Done`
+### 3.2 Labels (already created)
 
-4. Optional custom fields:
+`type:*` · `area:*` · `priority:P0|P1|P2` · `phase:*` · `status:blocked`
 
-   - **Priority:** P0 / P1 / P2  
-   - **Area:** frontend / backend / infra / docs  
-   - **Phase:** Foundation / Core / Ops  
-
-### 3.2 Labels (create once)
-
-```text
-type:feature | type:bug | type:chore | type:docs | type:ci
-area:frontend | area:backend | area:db | area:auth | area:infra
-priority:P0 | priority:P1 | priority:P2
-phase:foundation | phase:core | phase:ops
-status:blocked
-```
-
-### 3.3 The 18 issues
-
-Create them in order. Move Phase 0–1 issues to **Done** and close them immediately.
-
-#### A. Already done (create, then close)
-
-| ID | Title | Labels |
-|----|-------|--------|
-| #1 | `[Done] Phase 0–1: Local prerequisites and free cloud accounts` | `type:chore`, `phase:foundation` |
-| #2 | `[Done] Phase 0–1: Backend/frontend env bootstrap and /health smoke` | `type:chore`, `area:backend`, `area:frontend` |
-
-**Body for each:** short description + acceptance checklist (Node / Python / Docker; Supabase / HF / Vercel accounts; `/health`; `.env.example`; Docker on port 7860).
-
-**Close comment:**
-
-```text
-Completed on phase1 branch before GitHub tracking.
-```
-
-#### B. Process / QA (do next, before features)
-
-| ID | Title | Labels |
-|----|-------|--------|
-| #3 | `chore(ci): implement GitHub Actions for frontend and backend` | `type:ci`, `priority:P0` |
-| #4 | `docs: CONTRIBUTING — branch naming, PR template, issue linking` | `type:docs`, `priority:P0` |
-
-#### C. Product backlog (MVP order)
-
-| ID | Title | Labels | Depends on |
-|----|-------|--------|------------|
-| #5 | `chore: frontend MVP audit — inventory screens, mock data, gaps vs API` | `area:frontend`, `priority:P0` | — |
-| #6 | `db: Supabase schema — users/roles, events, seats, bookings` | `area:db`, `priority:P0` | — |
-| #7 | `feat(auth): Supabase Auth + FastAPI JWT validation + RBAC` | `area:auth`, `priority:P0` | #6 |
-| #8 | `feat(api): OpenAPI contract for events, seats, bookings` | `area:backend`, `priority:P0` | #6 |
-| #9 | `feat(frontend): app shell, routing, role-aware navigation` | `area:frontend`, `priority:P0` | #5 |
-| #10 | `feat: event discovery — browse, search, filter, sort` | `type:feature`, `priority:P0` | #8, #9 |
-| #11 | `feat: seat selection + double-booking prevention` | `type:feature`, `priority:P0` | #6, #8 |
-| #12 | `feat: booking lifecycle — create, history, cancel, status` | `type:feature`, `priority:P0` | #11 |
-| #13 | `feat: notifications — confirm, cancel, reminder, update` | `type:feature`, `priority:P1` | #12 |
-| #14 | `feat: organizer panel — event CRUD, capacity, booking window` | `type:feature`, `priority:P1` | #10, #12 |
-| #15 | `feat: analytics dashboard — bookings, occupancy, cancellations` | `type:feature`, `priority:P1` | #12 |
-| #16 | `feat: admin — categories, users oversight, booking issues` | `type:feature`, `priority:P2` | #14 |
-| #17 | `test: Vitest + Pytest baseline for critical paths` | `type:chore`, `priority:P1` | #3, #12 |
-| #18 | `chore(deploy): Vercel + HF Space smoke + CORS + Auth redirects` | `area:infra`, `priority:P1` | #7, #12 |
-
-### 3.4 Issue body template
-
-Use this template for every new issue:
+### 3.3 Issue body template
 
 ```markdown
 ## Summary
@@ -138,10 +92,8 @@ One paragraph: what and why.
 
 ## Tasks
 - [ ] ...
-- [ ] ...
 
 ## Acceptance criteria
-- [ ] ...
 - [ ] ...
 
 ## Stack notes
@@ -154,82 +106,64 @@ Blocks: #
 Blocked by: #
 ```
 
-### 3.5 Frontend “unknown problems”
-
-Do **not** open random bug issues yet.
-
-1. Open **#5** (frontend audit).
-2. On a branch, list routes/screens and mark each: `mock` / `partial` / `missing` / `broken`.
-3. From the audit, open **bug issues only for real defects**  
-   (example: `#19 fix: seat map double-select`).
-
 ---
 
 ## 4. Development and proposal — Branching & PRs
 
-### 4.1 Branch rules
-
 | Branch | Purpose |
 |--------|---------|
 | `main` | Always deployable; protected |
-| `develop` | Optional integration branch; student teams may skip and PR → `main` |
-| `feature/#N-short-name` | One issue = one branch |
-| `fix/#N-short-name` | Bugfix |
-| `chore/#N-short-name` | CI / docs / infra |
-
-**Examples:**
+| `feature/<issue>-short-name` | One issue = one branch |
+| `fix/<issue>-short-name` | Bugfix |
+| `chore/<issue>-short-name` | CI / docs / infra |
 
 ```text
-feature/7-supabase-auth-jwt
-feature/11-seat-selection
-chore/3-github-actions-ci
-fix/19-seat-map-double-select
+chore/37-github-actions-ci
+chore/38-contributing-keywords
+feature/40-supabase-schema
 ```
 
-### 4.2 One-issue workflow
+### One-issue workflow
 
 ```text
 1. Move issue → Ready → In Progress
 2. git checkout main && git pull
-3. git checkout -b feature/12-booking-lifecycle
-4. Implement + commit (small commits)
+3. git checkout -b feature/46-booking-lifecycle
+4. Implement + commit
 5. Push branch
-6. Open PR → main
+6. Open PR → main with keyword in PR body
 7. CI must pass
 8. Review → merge
-9. Issue auto-closes → move card to Done
+9. Issue auto-closes via keyword → card → Done
 ```
-
-### 4.3 PR title style
-
-```text
-feat(bookings): create/cancel booking API and history UI (#12)
-fix(frontend): prevent double seat selection (#19)
-chore(ci): add frontend lint and backend pytest (#3)
-```
-
-### 4.4 Protect `main`
-
-Repo **Settings → Branches**:
-
-- Require a pull request before merging
-- Require status checks (after #3 exists): frontend CI, backend CI
-- Require 1 review if the team has multiple members; solo still use PRs for history
 
 ---
 
-## 5. Linking work — Issue keywords
+## 5. Linking work — GitHub keywords (required)
 
-Put keywords in the **PR description** (not only in commits):
+GitHub uses automation keywords in **pull request descriptions** and **commit messages** to dynamically link PRs to issues and **automatically close** them when merged. This removes the need to manually mark issues resolved after merge.
 
-| Keyword | Effect |
-|---------|--------|
-| `Closes #12` | Merge closes the issue |
-| `Fixes #19` | Same for bugs |
-| `Resolves #7` | Same |
-| `Refs #5` | Links without closing |
+### Closing keywords
 
-### PR body template
+| Keyword forms | Example in PR body |
+|---------------|--------------------|
+| `Closes` / `Close` / `Closed` | `Closes #37` |
+| `Fixes` / `Fix` / `Fixed` | `Fixes #55` |
+| `Resolves` / `Resolve` / `Resolved` | `Resolves #40` |
+
+### Reference only (does not close)
+
+```text
+Refs #39
+```
+
+### Where to put them
+
+1. **Required:** PR description (most reliable).  
+2. **Optional:** commit message body.  
+3. Prefer **one** `Closes #N` per PR unless multiple issues are fully done.
+
+### PR body template (must include keyword)
 
 ```markdown
 ## Summary
@@ -237,40 +171,42 @@ Put keywords in the **PR description** (not only in commits):
 
 ## Test plan
 - [ ] ...
-- [ ] ...
 
-Closes #12
+Closes #46
 ```
 
-One PR should usually close **one** issue.  
-Use `Closes #10, Closes #11` only when both issues are fully complete in that PR.
+### Examples for remaining MVP work
+
+| When you finish | Put this in the PR body |
+|-----------------|-------------------------|
+| CI workflows | `Closes #37` |
+| CONTRIBUTING / PR template | `Closes #38` |
+| Frontend audit write-up | `Closes #39` |
+| Supabase schema | `Closes #40` |
+| Auth | `Closes #41` |
+| OpenAPI | `Closes #42` |
+| App shell | `Closes #43` |
+| Event discovery | `Closes #44` |
+| Seat selection | `Closes #45` |
+| Booking lifecycle | `Closes #46` |
+| Notifications | `Closes #47` |
+| Organizer panel | `Closes #48` |
+| Analytics | `Closes #49` |
+| Admin | `Closes #50` |
+| Test baseline | `Closes #51` |
+| Deploy smoke | `Closes #52` |
+| A bug found in audit | `Fixes #<new-bug-issue>` |
 
 ---
 
 ## 6. Automated quality assurance — GitHub Actions
 
-Workflow files under `.github/workflows/` are currently **empty**. Issue **#3** fills them.
+Issue **#37** fills empty CI stubs.
 
-### 6.1 Minimum CI (before heavy features)
-
-**`.github/workflows/ci-frontend.yml`**
-
-- Trigger: PR and push to `main` when `frontend/**` changes
-- Steps: `npm ci` → `npm run lint` → `npm run build` → `npm test` (when tests exist)
-
-**`.github/workflows/ci-backend.yml`**
-
-- Trigger: PR and push when `backend/**` changes
-- Steps: install deps → optional lint (`ruff` / `flake8`) → `pytest`
-
-### 6.2 Deploy workflows
-
-- Leave staging/production **manual or deferred** until #18
-- Do not enable auto-deploy on empty YAML stubs
-
-### 6.3 Quality gate
-
-No merge to `main` while CI is red.
+- **Frontend:** on `frontend/**` → install → `npm run build` (add lint/test when scripts exist)
+- **Backend:** on `backend/**` → install deps + pytest
+- **Rule:** no merge to `main` while CI is red
+- Deploy workflows stay manual until **#52**
 
 ---
 
@@ -280,52 +216,70 @@ No merge to `main` while CI is red.
 flowchart LR
   A[Issue created] --> B[Branch from main]
   B --> C[Commits]
-  C --> D[PR opened]
+  C --> D[PR opened with Closes N]
   D --> E[CI runs]
   E --> F{CI green?}
   F -->|No| C
   F -->|Yes| G[Code review]
   G --> H[Merge to main]
-  H --> I[Issue auto-closed]
+  H --> I[Issue auto-closed by keyword]
   I --> J[Project card Done]
   J --> K[Optional deploy HF/Vercel]
 ```
 
-### 7.1 Merge checklist (every PR)
+### Merge checklist
 
-1. Linked with `Closes #N`
+1. PR body has `Closes #N` / `Fixes #N` / `Resolves #N`
 2. CI green
-3. Acceptance criteria on the issue checked off
-4. No secrets (`.env` never committed)
-5. Prefer squash merge (one clear commit per issue on `main`)
+3. Acceptance criteria checked on the issue
+4. No secrets committed
+5. Prefer squash merge
 
-### 7.2 After merge
+### After merge
 
-- Confirm the issue is closed
-- Confirm the Project card is in **Done**
-- Delete the remote branch
-- Pull `main` before starting the next issue
+- Confirm issue **auto-closed** (keyword worked)
+- Confirm Project card in **Done**
+- Delete remote branch
+- Pull `main` before the next issue
 
 ---
 
-## 8. This week’s checklist
+## 8. All remaining steps (ordered)
 
-1. Create Project board + labels  
-2. Create issues **#1–#18** (close #1–#2)  
-3. Implement **#3** (CI) and **#4** (CONTRIBUTING) via PRs  
-4. Complete **#5** frontend audit → open real bug issues only if needed  
-5. Deliver **#6 → #7 → #8 → #9** (schema, auth, API, shell)  
-6. Deliver core booking path **#10 → #11 → #12**  
-7. Deliver **#13–#18**
+Do these in order. Every implementation step ends with a PR that includes the matching keyword.
+
+| # | Action | Keyword on merge |
+|--:|--------|------------------|
+| 1 | Create Project board `Seat-Flow MVP`; add #35–#52; set column status | — (board only) |
+| 2 | PR: CONTRIBUTING + PR template | `Closes #38` |
+| 3 | PR: fill `ci-frontend.yml` + `ci-backend.yml` | `Closes #37` |
+| 4 | Enable branch protection on `main` (require PR + CI checks) | — |
+| 5 | PR: frontend MVP audit inventory | `Closes #39` |
+| 6 | Open bug issues only for confirmed defects; fix via `Fixes #N` | `Fixes #N` |
+| 7 | PR: Supabase schema | `Closes #40` |
+| 8 | PR: Auth + JWT + RBAC | `Closes #41` |
+| 9 | PR: OpenAPI events/seats/bookings | `Closes #42` |
+| 10 | PR: app shell / role-aware routing | `Closes #43` |
+| 11 | PR: event discovery | `Closes #44` |
+| 12 | PR: seat selection + double-booking prevention | `Closes #45` |
+| 13 | PR: booking lifecycle | `Closes #46` |
+| 14 | PR: notifications | `Closes #47` |
+| 15 | PR: organizer panel | `Closes #48` |
+| 16 | PR: analytics dashboard | `Closes #49` |
+| 17 | PR: admin tools | `Closes #50` |
+| 18 | PR: Vitest + Pytest baseline | `Closes #51` |
+| 19 | PR: Vercel + HF deploy smoke + CORS + Auth redirects | `Closes #52` |
 
 ---
 
 ## 9. Do not do
 
-- Recreate the old DynamoDB / Lambda issues as-is  
+- Recreate old DynamoDB / Lambda issues as-is  
 - Put all MVP work into one giant issue  
 - Commit straight to `main` without PRs  
-- Open dozens of speculative frontend bugs before the audit  
+- Merge a PR **without** `Closes` / `Fixes` / `Resolves` when the issue is finished  
+- Manually close an issue that should have been closed by a keyword (fix the PR text instead)  
+- Open speculative frontend bugs before the audit (#39)  
 
 ---
 
@@ -333,8 +287,8 @@ flowchart LR
 
 | Question | Answer |
 |----------|--------|
-| How many issues? | **18** to start |
-| First open work? | **#3 CI**, **#4 docs**, **#5 FE audit**, **#6 schema** |
-| Frontend bugs? | Unknown → **audit first**, then bug issues |
-| Old `project_issues/`? | Outdated stack → use the issue list in this document |
-)
+| MVP issues? | **#35–#52** (18 total) |
+| First open work? | **#38** docs, **#37** CI, then **#39** audit, **#40** schema |
+| How do issues close? | PR body: `Closes #N` / `Fixes #N` / `Resolves #N` → merge |
+| Frontend bugs? | Audit **#39** first, then `Fixes #<bug>` |
+| Process doc? | This file + [CONTRIBUTING.md](../../CONTRIBUTING.md) |
