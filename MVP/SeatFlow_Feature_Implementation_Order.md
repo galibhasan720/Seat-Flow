@@ -8,6 +8,28 @@ This document lists every MVP feature in **implementation order** (dependencies 
 
 > **How to use this in viva:** Implement features in the order below. For each feature you demo, walk the examiner through the matching question groups (Frontend → DevTools → React DevTools → Profiler → Backend → API → cURL/Postman → Database → Code Understanding).
 
+## GitHub tracking
+
+| Feature | GitHub issue |
+|---------|--------------|
+| Epic (all) | [#56](https://github.com/galibhasan720/Seat-Flow/issues/56) |
+| 0 MVC foundation | [#55](https://github.com/galibhasan720/Seat-Flow/issues/55) |
+| 1 Schema | [#40](https://github.com/galibhasan720/Seat-Flow/issues/40) |
+| 2–4 Auth / profile / reset | [#41](https://github.com/galibhasan720/Seat-Flow/issues/41) |
+| Shell / audit | [#39](https://github.com/galibhasan720/Seat-Flow/issues/39), [#43](https://github.com/galibhasan720/Seat-Flow/issues/43) |
+| OpenAPI | [#42](https://github.com/galibhasan720/Seat-Flow/issues/42) |
+| 5 Discovery | [#44](https://github.com/galibhasan720/Seat-Flow/issues/44) |
+| 6–7 Organizer + seats | [#48](https://github.com/galibhasan720/Seat-Flow/issues/48) |
+| 8 Seat selection | [#45](https://github.com/galibhasan720/Seat-Flow/issues/45) |
+| 9–11 Booking lifecycle | [#46](https://github.com/galibhasan720/Seat-Flow/issues/46) |
+| 12 Notifications | [#47](https://github.com/galibhasan720/Seat-Flow/issues/47) |
+| 13 Analytics | [#49](https://github.com/galibhasan720/Seat-Flow/issues/49) |
+| 14 Admin | [#50](https://github.com/galibhasan720/Seat-Flow/issues/50) |
+| Tests | [#51](https://github.com/galibhasan720/Seat-Flow/issues/51) |
+| 15 Deploy | [#52](https://github.com/galibhasan720/Seat-Flow/issues/52) |
+
+Local issue specs: `project_issues/README.md` · Phased checklist: `MVP/Phase_order(features).md`
+
 ---
 
 ## Implementation Order Overview
